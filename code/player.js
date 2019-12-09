@@ -13,7 +13,7 @@ class Player {
 		this.x = x;
 		this.y = y;
 
-		this.g = 0.25; 			// gravity
+		this.g = 0.35; 			// gravity
 		this.dy = 0;			// change in pos y 
 
 		this.velY = 0;			// the velocity along y. we don't need velx
@@ -50,6 +50,8 @@ class Player {
 			this.dy = 0;
 		}
 
+		noStroke();
+		fill(255);
 		ellipse(this.x, this.y+this.dy, 30, 30);
 
 	}
