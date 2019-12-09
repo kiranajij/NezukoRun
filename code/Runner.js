@@ -10,7 +10,7 @@ class Runner {
 		// optimize the code.
 		// println(p);
 
-		this.prob = 0.5;			// probablity of new obstacle being added
+		this.prob = 0.8;			// probablity of new obstacle being added
 		this.frameDensity = 60;		// after how many frames obstacle to be added
 
 	}
@@ -40,6 +40,7 @@ class Runner {
 
 	collisionDestection () {
 		/*
+
 		*/
 	}
 }

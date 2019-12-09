@@ -7,7 +7,7 @@ class Obstacle {
 
 	render (vel) {
 
-		fill(255, 0, 0);
+		fill(2, 134, 211);
 		rect(this.x, 
 			450-this.height, 
 			this.width, 

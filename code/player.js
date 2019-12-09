@@ -18,6 +18,7 @@ class Player {
 
 		this.velY = 0;			// the velocity along y. we don't need velx
 								// because player is fixed along X.
+		this._tDoubleJump = true;	// is able to double jump
 	}
 
 	render() {
@@ -46,8 +47,11 @@ class Player {
 
 		if (this.dy >= 0){
 			// can't go bellow this.y. so set everyting back to 0;
+			// TODO: this part needs a little more optimization
+			// this takes more time to calculate everytime
 			this.velY = 0;
 			this.dy = 0;
+			this._tDoubleJump = true;
 		}
 
 		noStroke();
@@ -63,7 +67,11 @@ class Player {
 		
 		if (this.velY == 0){
 
-			this.velY -= 7;
+			this.velY = -7;
+		} else if (this._tDoubleJump) {
+			// if player can double jump, then double jump and set the indicator to false.
+			this.velY = -7;
+			this._tDoubleJump = false;
 		}
 		// print(this.vel);
 
