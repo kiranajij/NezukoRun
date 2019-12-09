@@ -19,6 +19,7 @@ class Player {
 		this.velY = 0;			// the velocity along y. we don't need velx
 								// because player is fixed along X.
 		this._tDoubleJump = true;	// is able to double jump
+		this._isStationary = true;	// to save processing
 	}
 
 	render() {
@@ -37,15 +38,14 @@ class Player {
 		Everytime render is called we'll calculate the new dx and dy
 		*/
 
-		
+		if (this.dy <= 0 || this.velY < 0){
 			this.velY += this.g;
 			this.dy += this.velY;
-
-		if (this.velY > abs(this.maxVel)){
-			this.vel = -this.maxVel;
 		}
 
-		if (this.dy >= 0){
+
+		if (this.dy > 0){
+
 			// can't go bellow this.y. so set everyting back to 0;
 			// TODO: this part needs a little more optimization
 			// this takes more time to calculate everytime
@@ -55,7 +55,7 @@ class Player {
 		}
 
 		noStroke();
-		fill(255);
+		fill(156, 168, 216);
 		ellipse(this.x, this.y+this.dy, 30, 30);
 
 	}
@@ -68,8 +68,11 @@ class Player {
 		if (this.velY == 0){
 
 			this.velY = -7;
+
 		} else if (this._tDoubleJump) {
-			// if player can double jump, then double jump and set the indicator to false.
+			// if player can double jump, then double jump and set the 
+			//indicator to false.
+
 			this.velY = -7;
 			this._tDoubleJump = false;
 		}

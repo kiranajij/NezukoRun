@@ -43,4 +43,8 @@ class Runner {
 
 		*/
 	}
+
+	jump() {
+		this.player.jump();
+	}
 }
