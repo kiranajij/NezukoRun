@@ -25,6 +25,10 @@ class Player {
 								// because player is fixed along X.
 		this._tDoubleJump = true;	// is able to double jump
 		this._isStationary = true;	// to save processing
+
+
+		this.player.debug = true;
+		this.posPlayer = createVector(x, y);
 	}
 
 	render() {
@@ -43,26 +47,34 @@ class Player {
 		Everytime render is called we'll calculate the new dx and dy
 		*/
 
-		if (this.dy <= 0 || this.velY < 0){
-			this.player.setVelocity(0, this.velY+this.g);
+		// print(this.dy);
+
+		if (this.dy < 0 || this.velY < 0){
+
 			this.dy += this.velY;
-		}
+			this.velY += this.g;
+
+			
 
 
-		if (this.dy > 0){
-
+		} else if (this.dy > 0){
+			print(this.dy);
 			// can't go bellow this.y. so set everyting back to 0;
 			// TODO: this part needs a little more optimization
 			// this takes more time to calculate everytime
 			this.velY = 0;
 			this.dy = 0;
-			this.player.setVelocity(0, 0);
+			// this.posPlayer.y = this.y;
+			// this.player.position = this.posPlayer;
 			this._tDoubleJump = true;
+			// console.log("doube jump reset");
 		}
 
 		noStroke();
 		fill(156, 168, 216);
 		// ellipse(this.x, this.y+this.dy, 30, 30);
+		this.posPlayer.y = this.y+this.dy;
+		this.player.position = this.posPlayer;
 		this.player.display();
 
 	}
@@ -72,20 +84,21 @@ class Player {
 		// Triggers everytime space is pressed. On jump we will add a upward velocity
 		// to the player and determine dx and dy with a gravity G.
 		
-		// if (this.velY == 0){
+		if (this.velY == 0){
 
-		// 	this.velY = -7;
+			this.velY = -7;
 
-		// } else if (this._tDoubleJump) {
-		// 	// if player can double jump, then double jump and set the 
-		// 	//indicator to false.
+		} else if (this._tDoubleJump) {
+			// if player can double jump, then double jump and set the 
+			//indicator to false.
 
-		// 	this.velY = -7;
-		// 	this._tDoubleJump = false;
-		// }
-		// // print(this.vel);
-		this.player.setVelocity(0, -7);
-		this.player.setPositon(0, 0);
+			this.velY = -7;
+			this._tDoubleJump = false;
+			// print("dbl jump");
+		}
+		// print(this.vel);
+		// this.player.setVelocity(0, -7);
+		// // this.player.setPositon(0, 0);
 
 	}
 
