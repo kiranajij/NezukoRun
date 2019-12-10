@@ -15,6 +15,9 @@ class Runner {
 		this.prob = 0.8;			// probablity of new obstacle being added
 		this.frameDensity = 60;		// after how many frames obstacle to be added
 
+		this.gameValue = true;
+		this.collisionCallback = null;
+
 	}
 
 	render(){
@@ -41,26 +44,20 @@ class Runner {
 			}
 		}
 		this.obstacles.draw();
-		// for(var i=this.obstacles.length-1; i>=0; i--){
-		// 	// this part is checking if any obstacle went off screen. if it did,
-		// 	// don't render it anymore, and remove it from the array. else render it
-		// 	if (this.obstacles[i].offscreen()) {
-		// 		this.obstacles.splice(i, 1);
-		// 	} else {
-		// 		this.obstacles[i].render(5);
-		// 	}
-		// }
-		this.obstacles.collide(this.player.player, this.collisionCallback);
+		this.obstacles.collide(this.player.player,
+			this.collisionCallback);
+		return this.gameValue;
 	}
 
-	collisionCallback() {
-		/*
+	// collisionCallback() {
+	// 	/*
 		
-		*/
-		print("collision detected");
-		noLoop();
-		text("Game Over", width/2, height/2);
-	}
+	// 	*/
+	// 	print("collision detected");
+	// 	// noLoop();
+	// 	text("Game Over", width/2, height/2);
+	// 	this.gameValue = false;
+	// }
 
 	jump() {
 		this.player.jump();
