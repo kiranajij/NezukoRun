@@ -1,9 +1,9 @@
 class Obstacle {
-	constructor (x) {
-		this.height = 40;
-		this.x = x; 
-		this.width = 10
-	}
+	// constructor (x) {
+	// 	this.height = 40;
+	// 	this.x = x; 
+	// 	this.width = 10
+	// }
 
 	render (vel) {
 

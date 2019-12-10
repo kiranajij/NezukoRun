@@ -76,6 +76,7 @@ class Player {
 		this.posPlayer.y = this.y+this.dy;
 		this.player.position = this.posPlayer;
 		this.player.display();
+		this.player.setDefaultCollider();
 
 	}
 

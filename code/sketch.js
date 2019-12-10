@@ -11,6 +11,9 @@ function setup(){
 	ground.debug = true;
 	ground.draw = function() {rect(0, 0, width, 150);};
 	ground.immovable = true;
+
+	textAlign(CENTER);
+	textSize(32);
 }
 
 function draw(){
